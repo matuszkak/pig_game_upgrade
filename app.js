@@ -2,7 +2,6 @@
 //kell két új változó: lastRolls = utolsó dobásokat rögzíti, winningscore: nyerési pontszám paraméterehzető
 let scores, roundScore, activePlayer, lastRolls, winningscore;
 
-// nyerési pontszám default értéke
 winningscore = 100;
 
 // UI inicializálás új kör kezdéskor
@@ -12,6 +11,23 @@ function init() {
   lastRolls = [0, 0];
   roundScore = 0;
   activePlayer = 0;
+
+
+  //nyerési pontszámot update-eljük ha volt változtatás, ha nem akkor meg beírjuk a defaultot
+
+  // ha töltve van a mező...
+  if (document.querySelector('.final-score').value !== "") {
+    if (isNaN(document.querySelector('.final-score').value)) {
+      // ha nem számot írt be akkor marad az előző érték amit visszaírunk
+      document.getElementsByClassName('final-score')[0].value = winningscore;
+    } else {
+      // ha számot írt be akkor kivesszük
+      winningscore = parseInt(document.querySelector('.final-score').value);
+    }
+  } else {
+    // ha nincs töltve az input field akkor beletesszük a default értéket
+    document.getElementsByClassName('final-score')[0].placeholder = winningscore;
+  };
 
   // beállítjuk a kezdő értékeket a UI-on is
   document.querySelector('#score-0').textContent = 0;
