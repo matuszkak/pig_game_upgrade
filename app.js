@@ -49,6 +49,16 @@ function init() {
 
   document.querySelector('.player-1-panel').classList.remove('active');
   document.querySelector('.player-0-panel').classList.add('active');
+
+  // pénzfeldobással döntünk h ki kezd ;-)
+  let coin = Math.random();
+  if (coin > 0.5) {
+    document.querySelector('#name-0').textContent = 'Mira';
+    document.querySelector('#name-1').textContent = 'Apa';
+  } else {
+    document.querySelector('#name-0').textContent = 'Apa';
+    document.querySelector('#name-1').textContent = 'Mira';
+  }
 }
 
 // játékos váltás hold, 1-es vagy dupla 6-os esetén
