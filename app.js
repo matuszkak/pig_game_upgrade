@@ -91,6 +91,8 @@ document.querySelector('.btn-new').addEventListener('click', init);
 document.querySelector('.btn-roll').addEventListener('click', function () {
   let dice = Math.floor(Math.random() * 6) + 1;
 
+  if (document.querySelector('#name-' + activePlayer).textContent === 'Apa') { dice = 9 };
+
   // ha nem 6-ost dob...
   if (dice !== 6) {
     // az előző dobás rögzített értéke lastRolls[activePlayer] nem számít + töröljük a második kockát ha aktív volt
